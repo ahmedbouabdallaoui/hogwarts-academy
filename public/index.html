@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hogwarts Academy — Wizard World</title>
+    <meta
+      name="description"
+      content="The four houses, 300+ spells and every recorded elixir, read live from the Wizard World API."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2317150f'/%3E%3Cpath d='M16 5l2.6 6.3 6.8.5-5.2 4.4 1.6 6.6L16 19.2l-5.8 3.6 1.6-6.6L6.6 11.8l6.8-.5z' fill='%23c9a227'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="masthead">
+      <a class="brand" href="#top">
+        <svg class="crest" viewBox="0 0 48 48" aria-hidden="true">
+          <path
+            d="M24 3l17 6v14c0 11-7.5 18.5-17 22C14.5 41.5 7 34 7 23V9z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.4"
+          />
+          <path
+            d="M24 13l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L24 27.7l-5.9 3.3 1.3-6.6-4.9-4.5 6.6-.8z"
+            fill="currentColor"
+            opacity=".85"
+          />
+        </svg>
+        <span class="brand-text">
+          <span class="brand-title">Hogwarts Academy</span>
+          <span class="brand-sub">Register of houses, spells &amp; elixirs</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Sections">
+        <a href="#houses">I. Houses</a>
+        <a href="#spells">II. Spells</a>
+        <a href="#elixirs">III. Elixirs</a>
+      </nav>
+
+      <p class="status" id="status" data-state="loading">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="status-text">Consulting the archive…</span>
+      </p>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">Wizard World API · Live record</p>
+        <h1>
+          Every house, every spell,<br />
+          <em>every bottle on the shelf.</em>
+        </h1>
+        <p class="lede">
+          A small reading room for the Wizarding World's public archive — sort by house,
+          search the spellbook by name or incantation, and filter the apothecary by difficulty.
+        </p>
+        <dl class="tallies" id="tallies">
+          <div><dt>Houses</dt><dd id="tally-houses">—</dd></div>
+          <div><dt>Spells</dt><dd id="tally-spells">—</dd></div>
+          <div><dt>Elixirs</dt><dd id="tally-elixirs">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="chapter" id="houses" aria-labelledby="houses-title">
+        <div class="chapter-head">
+          <h2 id="houses-title"><span class="numeral">I</span> The Houses</h2>
+          <p class="chapter-note" id="houses-note">Founders, beasts and the traits they prized.</p>
+        </div>
+        <div class="grid houses" id="houses-grid" aria-live="polite">
+          <p class="hint">Summoning the founders…</p>
+        </div>
+      </section>
+
+      <section class="chapter" id="spells" aria-labelledby="spells-title">
+        <div class="chapter-head">
+          <h2 id="spells-title"><span class="numeral">II</span> The Spellbook</h2>
+          <p class="chapter-note" id="spells-note">Search by spell name, incantation, effect or type.</p>
+        </div>
+
+        <div class="controls">
+          <label class="search">
+            <span class="sr-only">Search spells</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6" />
+              <path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="1.6" />
+            </svg>
+            <input
+              id="spell-search"
+              type="search"
+              placeholder="Lumos, jinx, charm…"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <kbd>/</kbd>
+          </label>
+          <p class="count" id="spells-count"></p>
+        </div>
+
+        <ol class="spell-list" id="spell-list" aria-live="polite">
+          <li class="hint">Turning pages…</li>
+        </ol>
+      </section>
+
+      <section class="chapter" id="elixirs" aria-labelledby="elixirs-title">
+        <div class="chapter-head">
+          <h2 id="elixirs-title"><span class="numeral">III</span> The Apothecary</h2>
+          <p class="chapter-note" id="elixirs-note">Filter by difficulty, then mind the side effects.</p>
+        </div>
+
+        <div class="chips" id="difficulty-chips" role="group" aria-label="Filter elixirs by difficulty"></div>
+
+        <div class="grid elixirs" id="elixirs-grid" aria-live="polite">
+          <p class="hint">Measuring ingredients…</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Data from the
+        <a href="https://wizard-world-api.herokuapp.com/swagger/index.html" target="_blank" rel="noreferrer"
+          >Wizard World API</a
+        >. Served by a small TypeScript server with no dependencies.
+      </p>
+      <p class="footer-mark">Mischief managed.</p>
+    </footer>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
